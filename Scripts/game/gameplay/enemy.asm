@@ -540,7 +540,7 @@ ENEMY: {
 
 		Okay:
 
-		//	lda #20
+			//lda #20
 			sta SpawnDelay
 			sta SpawnTimer
 

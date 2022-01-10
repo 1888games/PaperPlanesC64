@@ -3,7 +3,7 @@
 
 
 .label PADDING = 4
-.label MAX_SPRITES = 28
+.label MAX_SPRITES = 23
 
 SamplerTemp: .byte $00
 

@@ -4,13 +4,13 @@ IRQ: {
 	*= * "IRQ"
 
 	.label OpenBorderIRQLine = 249
-	.label MainIRQLine =240
+	.label MainIRQLine =255
 
 	.label ResetBorderIRQLine = 0
 	.label MultiplexerIRQLine = 20
 	.label SidTime = 5
 
-	MultiIRQLines:	.byte 40, 30
+	MultiIRQLines:	.byte 25, 25
 	SidTimer:		.byte 5
 	Frame:			.byte 0
 

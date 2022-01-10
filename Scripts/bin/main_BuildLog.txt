@@ -10,9 +10,9 @@ Memory Map
 Default-segment:
   *$0002-$0025 Temp vars zero page
   *$0026-$003d LPAX
-  *$003e-$0059 SpriteX
-  *$005a-$00c9 SpriteY
-  *$00ca-$00e9 SpriteCopyY
+  *$003e-$0054 SpriteX
+  *$0055-$00b0 SpriteY
+  *$00b1-$00cb SpriteCopyY
   $0801-$080c Basic
   $080e-$080d Basic End
   $0880-$08c1 Modules
@@ -21,13 +21,13 @@ Default-segment:
   $09b6-$09d4 Input
   $09d5-$0a75 Joystick
   $0a76-$0bff Maploader
-  $0c00-$0ca8 VicSpriteTable
-  $0ca9-$1042 IRQ
-  $1043-$1094 -Random
-  $1095-$113c -Plot
-  $113d-$14b4 -Sound
-  $14b5-$238f Lookup Data
-  $2390-$24e9 Main
+  $0c00-$0c8f VicSpriteTable
+  $0c90-$1029 IRQ
+  $102a-$107b -Random
+  $107c-$1123 -Plot
+  $1124-$149b -Sound
+  $149c-$2321 Lookup Data
+  $2322-$247b Main
   $3000-$335e sid
   $5a04-$5b07 Game Map
   $5b08-$5b8b Game Tiles
