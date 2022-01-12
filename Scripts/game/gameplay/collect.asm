@@ -12,6 +12,7 @@ COLLECT: {
 	.label FrameTime = 4
 
 
+	.label StartChar = 67
 
 	PosX_LSB:		.byte 0
 	PosX_MSB:		.byte 0

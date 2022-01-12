@@ -3,7 +3,7 @@ flex pass 1
 flex pass 2
 flex pass 3
 Output pass
-Writing prg file: /Users/nick/Dropbox/C64/Projects/Complete/PaperPlanes/Scripts/bin/main.prg
+Writing prg file: /Users/nick/Dropbox/C64/Projects/Complete/PaperPlanesC64/Scripts/bin/main.prg
 
 Memory Map
 ----------
@@ -31,10 +31,10 @@ Default-segment:
   $3000-$335e sid
   $5a04-$5b07 Game Map
   $5b08-$5b8b Game Tiles
-  $5d50-$5dc7 Game Colours
+  $5d50-$5db1 Game Colours
   $a000-$9fff Turn History
   $c400-$cc3f Sprites
-  $f000-$f3bf Charset
+  $f000-$f30f Charset
 
-Writing Vice symbol file: /Users/nick/Dropbox/C64/Projects/Complete/PaperPlanes/Scripts/bin/main.vs
+Writing Vice symbol file: /Users/nick/Dropbox/C64/Projects/Complete/PaperPlanesC64/Scripts/bin/main.vs
 Writing Symbol file: main.sym
