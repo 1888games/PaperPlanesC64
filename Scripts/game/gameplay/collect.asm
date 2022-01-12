@@ -72,10 +72,12 @@ COLLECT: {
 		lda #0
 		sta PosX_MSB
 
+	NewRandom:
+
 		jsr RANDOM.Get
 		and #%00111111
 		cmp #40
-		bcs New
+		bcs NewRandom
 
 		sta PosX_Char
 		asl
@@ -104,7 +106,10 @@ COLLECT: {
 
 		jsr RANDOM.Get
 		and #%00001111
+		clc
+		adc #3
 		sta PosY_Char
+
 		tay
 		asl
 		asl
@@ -113,10 +118,26 @@ COLLECT: {
 		adc #44
 		sta PosY
 		
+		lda PosX_Char
+		cmp #16
+		bcc NoCheck
+
+		lda PosX_Char
+		cmp #15
+		bcc NoCheck
+
+		cmp #24
+		bcs NoCheck
+
+		jmp NoDelete
+
+
+		NoCheck:
 
 		ldx PosX_Char
 		lda #StartChar
 
+	
 		jsr PLOT.PlotCharacter
 
 		lda #YELLOW + 8

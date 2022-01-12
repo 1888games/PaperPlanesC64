@@ -1,6 +1,6 @@
 ENEMY: {
 
-	.label MAX_ENEMIES = MAX_SPRITES - 3
+	.label MAX_ENEMIES = MAX_SPRITES - 1
 
 
 
@@ -71,7 +71,7 @@ ENEMY: {
 			sta DataPosition_MSB, x
 
 			lda #10
-			sta SpriteY + 3, x
+			sta SpriteY + 1, x
 			//sta SpriteX + 2, x
 
 			inx
@@ -130,7 +130,7 @@ ENEMY: {
 		lda LOOKUP.Pointers, y
 		clc
 		adc #PLAYER.StartPointer
-		sta SpritePointer + 3, x
+		sta SpritePointer + 1, x
 
 		lda LOOKUP.X_PosNeg, y
 		sta X_Direction, x
@@ -171,21 +171,21 @@ ENEMY: {
 
 		
 			lda #PLAYER.StartX
-			sta SpriteX + 3, x
+			sta SpriteX + 1, x
 			sta PosX_LSB, x
 
 			lda #PLAYER.StartY
-			sta SpriteY + 3, x
+			sta SpriteY + 1, x
 			sta PosY, x
 
 			jsr RANDOM.Get
 			and #%00000111
 			tay
 			lda Colours, y
-			sta SpriteColor + 3, x
+			sta SpriteColor + 1, x
 
 			lda #PLAYER.StartPointer
-			sta SpritePointer + 3, x
+			sta SpritePointer + 1, x
 
 			jsr AngleToSpeed
 
@@ -262,7 +262,7 @@ ENEMY: {
 		SetSprite:
 
 			lda PosY, x
-			sta SpriteY + 3, x
+			sta SpriteY + 1, x
 
 
 
@@ -306,21 +306,8 @@ ENEMY: {
 			cmp #MaxX
 			bcc SetSprite
 
-			lda Angle_MSB, x
-			clc
-			adc #128
-			sta Angle_MSB, x
-
-			jsr AngleToSpeed
-			//lda #PLAYER.MinX
-			//sta PosX_LSB, x
-
-			//lda #0
-			//sta PosX_MSB, x
-
-			jmp SetSprite
-
-
+			jmp Bounce
+			
 		Left:
 
 			lda PosX_Frac, x
@@ -350,39 +337,47 @@ ENEMY: {
 			cmp #MinX
 			bcs SetSprite
 
+		Bounce:
+
+			lda Exit
+			beq DoBounce
+
+			lda #0
+			sta DataPosition_MSB, x
+			sta PosY, x
+
+			jmp SetSprite
+
+
+		DoBounce:
+
 			lda Angle_MSB, x
-			sec
-			sbc #128
+			clc
+			adc #128
 			sta Angle_MSB, x
 
 			jsr AngleToSpeed
-
-			//lda #PLAYER.MaxX
-			//sta PosX_LSB, x
-
-			//lda #1
-			//sta PosX_MSB, x
 			
 
 		SetSprite:
 
 			lda PosX_LSB, x
-			sta SpriteX + 3, x
+			sta SpriteX + 1, x
 
 			lda PosX_MSB, x
 			beq NoMSB
 
-			lda SpriteColor + 3, x
+			lda SpriteColor + 1, x
 			ora #%10000000
-			sta SpriteColor + 3, x
+			sta SpriteColor + 1, x
 
 			jmp Finish
 
 		NoMSB:
 
-			lda SpriteColor + 3, x
+			lda SpriteColor + 1, x
 			and #%01111111
-			sta SpriteColor + 3, x
+			sta SpriteColor + 1, x
 
 
 		Finish:

@@ -165,11 +165,13 @@
 .label PATH_CHALLANGE_1_1_MIR=$d
 .label PATH_CHALLANGE_3_2=$16
 .label COLLECT=$1b9c {
-  .label New=$1bbe {
-    .label NoDelete=$1bce
-    .label IsMSB=$1bf0
-    .label AddOffset1=$1be5
-    .label NoMSB1=$1bf6
+  .label New=$1bbc {
+    .label NoDelete=$1bcc
+    .label NoCheck=$1c21
+    .label IsMSB=$1bee
+    .label AddOffset1=$1be3
+    .label NoMSB1=$1bf4
+    .label NewRandom=$1bd1
   }
   .label MinX=$2a
   .label Frame=$1b9f
@@ -184,17 +186,17 @@
   .label MaxY=$a5
   .label PosX_MSB=$1b9d
   .label PosX_LSB=$1b9c
-  .label FrameUpdate=$1c26 {
-    .label Ready=$1c3d
-    .label Okay=$1c51
-    .label Ready2=$1c2f
-    .label NotYet=$1c54
+  .label FrameUpdate=$1c3c {
+    .label Ready=$1c53
+    .label Okay=$1c67
+    .label Ready2=$1c45
+    .label NotYet=$1c6a
   }
   .label PosY_Char=$1ba3
   .label StartPointer=$21
   .label Collected=$1ba4
   .label Reset=$1ba5 {
-    .label Okay=$1bba
+    .label Okay=$1bb8
   }
   .label Margin=$1e
 }
@@ -253,90 +255,92 @@
 }
 .label CAPTURE_PLAYER_MSG=$2
 .label MAX_ENEMIES=$8
-.label ENEMY=$1dd7 {
-  .label Y_Speed_Frac=$1e4f
+.label ENEMY=$1ded {
+  .label Y_Speed_Frac=$1e71
   .label MinX=$10
-  .label PosY=$1f17
+  .label PosY=$1f4d
   .label MinY=$25
-  .label AngleToSpeed=$1f76 {
+  .label AngleToSpeed=$1fae {
   }
-  .label Angle_LSB=$1e77
-  .label PosY_Frac=$1ec7
-  .label X_Direction=$1e9f
-  .label SecondTimer=$1f2e
-  .label SpawnDelay=$1f2c
-  .label Control=$20f0 {
-    .label Left=$211b
-    .label NoWrap=$214c
-    .label Right=$2104
-    .label UpdateAngle=$212f
-    .label NoAngleChange=$2132
-    .label Finish=$214c
+  .label Angle_LSB=$1e9d
+  .label PosY_Frac=$1ef5
+  .label X_Direction=$1ec9
+  .label SecondTimer=$1f66
+  .label SpawnDelay=$1f64
+  .label Control=$212c {
+    .label Left=$2157
+    .label NoWrap=$2188
+    .label Right=$2140
+    .label UpdateAngle=$216b
+    .label NoAngleChange=$216e
+    .label Finish=$2188
   }
-  .label Y_Speed_Pixel=$1e63
+  .label Y_Speed_Pixel=$1e87
   .label StartFrames=$32
-  .label Invincible=$1f30
-  .label MAX_ENEMIES=$14
-  .label Colours=$1f32
+  .label Invincible=$1f68
+  .label MAX_ENEMIES=$16
+  .label Colours=$1f6a
   .label StartLifetime=$8
-  .label Angle_MSB=$1e8b
-  .label SlowMode=$1f2f
+  .label Angle_MSB=$1eb3
+  .label SlowMode=$1f67
   .label IncreasePerSpawn=$14
-  .label Reset=$1f3a {
-    .label Loop=$1f59
+  .label Reset=$1f72 {
+    .label Loop=$1f91
   }
-  .label Spawn=$1fa9 {
-    .label Available=$1fb1
-    .label Finish=$1fed
+  .label Spawn=$1fe1 {
+    .label Available=$1fe9
+    .label Finish=$2025
   }
-  .label X_Speed_Pixel=$1e3b
-  .label Exit=$1f31
-  .label CheckCollision=$214d {
-    .label Collided=$2176 {
+  .label X_Speed_Pixel=$1e5b
+  .label Exit=$1f69
+  .label CheckCollision=$2189 {
+    .label Collided=$21b2 {
     }
-    .label NoCollision=$2194
+    .label NoCollision=$21d0
   }
-  .label LifeRemaining_MSB=$1e13
-  .label LifeRemaining_LSB=$1dff
-  .label GetAvailableID=$1f68 {
-    .label Loop=$1f6a
-    .label EndLoop=$1f70
-    .label Found=$1f6f
+  .label LifeRemaining_MSB=$1e2f
+  .label LifeRemaining_LSB=$1e19
+  .label GetAvailableID=$1fa0 {
+    .label Loop=$1fa2
+    .label EndLoop=$1fa8
+    .label Found=$1fa7
   }
   .label StartDelay=$2
-  .label UpdateYPosition=$1fee {
-    .label Downwards=$1ff3
-    .label DoBounce=$203a
-    .label Upwards=$2010
-    .label Bounce=$202a
-    .label SetSprite=$2046
+  .label UpdateYPosition=$2026 {
+    .label Downwards=$202b
+    .label DoBounce=$2072
+    .label Upwards=$2048
+    .label Bounce=$2062
+    .label SetSprite=$207e
   }
-  .label Y_Direction=$1eb3
-  .label DataPosition_MSB=$1deb
+  .label Y_Direction=$1edf
+  .label DataPosition_MSB=$1e03
   .label MaxX=$51
-  .label DataPosition_LSB=$1dd7
-  .label X_Speed_Frac=$1e27
-  .label PosX_Frac=$1eef
+  .label DataPosition_LSB=$1ded
+  .label X_Speed_Frac=$1e45
+  .label PosX_Frac=$1f21
   .label MaxY=$f1
-  .label PosX_MSB=$1f03
-  .label Lifetime=$1f2b
-  .label PosX_LSB=$1edb
-  .label FrameUpdate=$2195 {
-    .label Loop=$21c1
-    .label Ready=$21ac
-    .label Okay=$21b6
-    .label EndLoop=$21d2
-    .label UpdateEnemies=$21bf
-    .label Finish=$21d7
+  .label PosX_MSB=$1f37
+  .label Lifetime=$1f63
+  .label PosX_LSB=$1f0b
+  .label FrameUpdate=$21d1 {
+    .label Loop=$21fd
+    .label Ready=$21e8
+    .label Okay=$21f2
+    .label EndLoop=$220e
+    .label UpdateEnemies=$21fb
+    .label Finish=$2213
   }
-  .label UpdateXPosition=$204c {
-    .label Left=$2095
-    .label NoMSB=$20e9
-    .label Right=$2051
-    .label SetSprite=$20d6
-    .label Finish=$20ef
+  .label UpdateXPosition=$2084 {
+    .label Left=$20c1
+    .label DoBounce=$2106
+    .label NoMSB=$2125
+    .label Right=$2089
+    .label Bounce=$20f6
+    .label SetSprite=$2112
+    .label Finish=$212b
   }
-  .label SpawnTimer=$1f2d
+  .label SpawnTimer=$1f65
 }
 .label PLAN_HOME_OR_FULL_CIRCLE=$b
 .label UP=$0
@@ -648,43 +652,43 @@
 .label CHAR_SET=$f000
 .label GAME_MODE_CHALLENGE=$6
 .label MAIN=$2000 {
-  .label Loop=$245d {
+  .label Loop=$24cd {
   }
-  .label PerformFrameCodeFlag=$2345
-  .label Unpause=$2382 {
+  .label PerformFrameCodeFlag=$23b5
+  .label Unpause=$23f2 {
   }
-  .label MachineType=$2347
-  .label nmi=$2394 {
-    .label CanPause=$23a7
-    .label Pause=$23b2
-    .label Exit=$23c6 {
+  .label MachineType=$23b7
+  .label nmi=$2404 {
+    .label CanPause=$2417
+    .label Pause=$2422
+    .label Exit=$2436 {
     }
   }
-  .label ResetGame=$23cc {
+  .label ResetGame=$243c {
   }
-  .label GameActive=$2344
-  .label SetupRestoreKey=$2377 {
+  .label GameActive=$23b4
+  .label SetupRestoreKey=$23e7 {
   }
-  .label GameMode=$2348
-  .label Entry=$2349 {
+  .label GameMode=$23b8
+  .label Entry=$23b9 {
   }
-  .label FrameCode=$2465 {
-    .label Playing=$2471
-    .label IsActive=$246a
-    .label DoNTSCMode=$2476
-    .label Skip=$2489
-    .label DoMore=$248c
-    .label DoPalMode=$248c
+  .label FrameCode=$24d5 {
+    .label Playing=$24e1
+    .label IsActive=$24da
+    .label DoNTSCMode=$24e6
+    .label Skip=$24f9
+    .label DoMore=$24fc
+    .label DoPalMode=$24fc
   }
-  .label SetGameColours=$243e {
+  .label SetGameColours=$24ae {
   }
-  .label LoadScreen=$240e {
+  .label LoadScreen=$247e {
   }
-  .label InitialiseGame=$23fe {
+  .label InitialiseGame=$246e {
   }
-  .label GameIsOver=$2346
-  .label SetupVIC=$2417 {
-    .label SwitchOnMulticolourMode=$2433
+  .label GameIsOver=$23b6
+  .label SetupVIC=$2487 {
+    .label SwitchOnMulticolourMode=$24a3
   }
 }
 .label PATH_FLUTTER_MIR=$27
@@ -723,33 +727,33 @@
 .label PLAN_DIVE_AWAY=$8
 .label SpriteColor=$6c
 .label FORMATION_UNISON=$0
-.label SCORING=$1c55 {
-  .label Score_Digits=$1c55
-  .label DrawBest=$1d11 {
-    .label NoHundreds=$1d35
-    .label NoTens=$1d58
-    .label Hundreds=$1d15
+.label SCORING=$1c6b {
+  .label Score_Digits=$1c6b
+  .label DrawBest=$1d27 {
+    .label NoHundreds=$1d4b
+    .label NoTens=$1d6e
+    .label Hundreds=$1d2b
   }
-  .label High_Digits=$1c58
-  .label High_Tens=$1c59
-  .label GotHigh=$1c5b
-  .label Score_Tens=$1c56
-  .label Score_Hundreds=$1c57
-  .label DrawDigit=$1c71 {
+  .label High_Digits=$1c6e
+  .label High_Tens=$1c6f
+  .label GotHigh=$1c71
+  .label Score_Tens=$1c6c
+  .label Score_Hundreds=$1c6d
+  .label DrawDigit=$1c87 {
   }
-  .label Increase=$1c9e {
-    .label NotFirstHigh=$1cfb
-    .label NoRecord=$1d10
-    .label Record=$1ce4
-    .label OkayDigit=$1cc5
+  .label Increase=$1cb4 {
+    .label NotFirstHigh=$1d11
+    .label NoRecord=$1d26
+    .label Record=$1cfa
+    .label OkayDigit=$1cdb
   }
-  .label Reset=$1c5c {
+  .label Reset=$1c72 {
   }
-  .label High_Hundreds=$1c5a
-  .label DrawScore=$1d74 {
-    .label NoHundreds=$1d98
-    .label NoTens=$1dbb
-    .label Hundreds=$1d78
+  .label High_Hundreds=$1c70
+  .label DrawScore=$1d8a {
+    .label NoHundreds=$1dae
+    .label NoTens=$1dd1
+    .label Hundreds=$1d8e
   }
 }
 .label TOP_RIGHT=$0
@@ -766,53 +770,63 @@
 .label PATH_BOSS_TURN_HOME=$22
 .label ENEMY_DRAGONFLY=$4
 .label wavetable_h=$1212
-.label POWERUP=$21d8 {
-  .label New=$2227 {
-    .label NoMSB=$225d
+.label POWERUP=$2214 {
+  .label Delete=$2266 {
+  }
+  .label New=$2272 {
+    .label NoDelete=$2284
+    .label NoCheck=$22d9
+    .label IsMSB=$22a6
+    .label AddOffset1=$229b
+    .label NoMSB1=$22ac
+    .label NewRandom=$2289
   }
   .label MinX=$2a
-  .label Frame=$21db
+  .label Frame=$2217
   .label MinY=$3f
-  .label PosY=$21da
-  .label Collect=$2205 {
-    .label Finish=$2226
+  .label PosY=$2216
+  .label Collect=$2243 {
+    .label Finish=$2265
   }
-  .label ProcessPowerup=$22f7 {
-    .label Ready=$231b
-    .label Okay=$232f
-    .label CheckWhetherExpired=$22f7
-    .label ClearPowerup=$2308
-    .label NotYet=$2335
-    .label NoReduceTimer=$230b
+  .label ProcessPowerup=$236b {
+    .label Ready=$238d
+    .label Okay=$23a1
+    .label CheckWhetherExpired=$236b
+    .label ClearPowerup=$237c
+    .label NotYet=$23a5
+    .label NoReduceTimer=$237f
   }
+  .label PosX_Char=$221a
   .label FrameTime=$8
-  .label Delay=$21dd
-  .label PowerActive=$21df
-  .label Collected=$21de
-  .label Reset=$21ed {
+  .label Delay=$2219
+  .label Colour=$222b
+  .label PowerActive=$221d
+  .label Collected=$221c
+  .label Reset=$222c {
   }
-  .label EndPowerup=$22e8 {
+  .label EndPowerup=$235b {
   }
-  .label TypeChance=$21e0
-  .label TypeColour=$21ea
-  .label FrameTimer=$21dc
+  .label TypeChance=$221e
+  .label TypeColour=$2228
+  .label FrameTimer=$2218
   .label MaxX=$37
   .label MaxY=$a5
-  .label PosX_MSB=$21d9
-  .label Type=$21e8
-  .label CheckSpawn=$227f {
-    .label NotCollected=$22cd
-    .label NotExit=$22bf
-    .label TimeUp=$22b1
-    .label Finish=$22e7
+  .label PosX_MSB=$2215
+  .label Type=$2226
+  .label CheckSpawn=$22f6 {
+    .label NotCollected=$2340
+    .label NotExit=$2332
+    .label TimeUp=$2328
+    .label Finish=$235a
   }
-  .label PosX_LSB=$21d8
-  .label FrameUpdate=$2336 {
-    .label Finish=$2343
+  .label PosX_LSB=$2214
+  .label FrameUpdate=$23a6 {
+    .label Finish=$23b3
   }
-  .label StartPointer=$21e9
+  .label PosY_Char=$221b
+  .label StartPointer=$2227
   .label Margin=$1e
-  .label FirstPointer=$25
+  .label FirstPointer=$43
 }
 .label POWER_SLOW=$0
 .label VIC=$880 {

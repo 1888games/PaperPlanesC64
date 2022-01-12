@@ -8,7 +8,7 @@ POWERUP: {
 	.label MinY = PLAYER.MinY + Margin
 	.label MaxY = PLAYER.MaxY - Margin - 50
 
-	.label FirstPointer = 37
+	.label FirstPointer = 67
 	.label FrameTime = 8
 
 
@@ -19,6 +19,8 @@ POWERUP: {
 	Frame:			.byte 0
 	FrameTimer: 	.byte 0
 	Delay:			.byte 10
+	PosX_Char:		.byte 0
+	PosY_Char:		.byte 0
 
 
 	Collected:		.byte 0
@@ -28,16 +30,17 @@ POWERUP: {
 	TypeChance:		.byte POWER_SLOW, POWER_SLOW, POWER_SLOW, POWER_SLOW, POWER_DESPAWN, POWER_INVINCIBLE, POWER_INVINCIBLE, POWER_INVINCIBLE
 	Type:			.byte 0
 	StartPointer:	.byte 0
-	TypeColour:		.byte WHITE, YELLOW, RED
-
+	TypeColour:		.byte WHITE, BLUE, PURPLE
+	Colour:			.byte 0
 
 	Reset:	{
 
 		lda #0
 		sta FrameTimer
+		sta PosY
 
 		lda #YELLOW
-		sta SpriteColor + 2
+	//	sta SpriteColor + 2
 
 		lda #255
 		sta PowerActive
@@ -46,7 +49,7 @@ POWERUP: {
 		sta Collected
 
 		lda #10
-		sta SpriteY + 2
+		//sta SpriteY + 2
 		//sta PowerActive
 
 		//jsr New
@@ -77,7 +80,8 @@ POWERUP: {
 
 		lda #10
 		sta PosY
-		sta SpriteY + 2
+
+		jsr Delete
 
 
 		Finish:
@@ -86,62 +90,111 @@ POWERUP: {
 	}
 
 
+	Delete: {
+
+		ldx PosX_Char
+		ldy PosY_Char
+		lda #0
+
+		jsr PLOT.PlotCharacter
+
+
+		rts
+	}
+
 
 	New: {
 
 		lda PowerActive
-		asl
-		asl
 		clc
 		adc #FirstPointer
 		sta StartPointer
 
 		ldx PowerActive
 		lda TypeColour, x
-		sta SpriteColor + 2
+		sta Colour
 
-		lda SpriteColor + 2
-		and #%01111111
-		sta SpriteColor + 2
+	NoDelete:
+
 
 		lda #0
 		sta PosX_MSB
 
+	NewRandom:
+
 		jsr RANDOM.Get
+		and #%00111111
+		cmp #40
+		bcs NewRandom
+
+		sta PosX_Char
+		asl
+		asl
+		clc
+		asl
+		bcs IsMSB
+
+	AddOffset1:
 
 		clc
-		adc #40
-		sta PosX_LSB
-		sta SpriteX + 2
-
-		cmp #40
-		bcs NoMSB
-
-		lda SpriteColor + 2
-		ora #%10000000
-		sta SpriteColor + 2
+		adc #17
+		bcc NoMSB1
 
 		inc PosX_MSB
+		jmp NoMSB1
 
-		NoMSB:
+	IsMSB:
+
+		inc PosX_MSB
+		jmp AddOffset1
+
+	NoMSB1:
+		
+		sta PosX_LSB
 
 		jsr RANDOM.Get
-		cmp #MinY
-		bcc NoMSB
+		and #%00001111
+		clc
+		adc #3
+		sta PosY_Char
 
-		cmp #MaxY
-		bcs NoMSB
-
+		tay
+		asl
+		asl
+		asl
+		clc
+		adc #44
 		sta PosY
 		
+		lda PosX_Char
+		cmp #16
+		bcc NoCheck
+
+		lda PosX_Char
+		cmp #15
+		bcc NoCheck
+
+		cmp #24
+		bcs NoCheck
+
+		jmp NoDelete
+
+
+		NoCheck:
+
+		ldx PosX_Char
+		lda StartPointer
+
+	
+		jsr PLOT.PlotCharacter
+
+
+		lda Colour
+		jsr PLOT.ColorCharacter
 
 		lda #0
 		sta FrameTimer
-		sta SpriteCopyY + 2
 		sta Frame
-
-		lda #10
-		sta SpriteY + 2
 
 		lda #250
 		sta Delay
@@ -182,9 +235,7 @@ POWERUP: {
 			lda ENEMY.Exit
 			beq NotExit
 
-			lda ENEMY.SpawnDelay
-			sec
-			sbc #50
+			lda #ENEMY.StartFrames
 			sta ENEMY.SpawnDelay
 
 		NotExit:
@@ -225,10 +276,12 @@ POWERUP: {
 		sta PowerActive
 
 		lda #10
-		sta SpriteY + 2
+	//	sta SpriteY + 2
 
 		lda #0
 		sta Collected
+
+		jsr Delete
 
 		rts
 	}
@@ -254,7 +307,7 @@ POWERUP: {
 		NoReduceTimer:
 
 			lda PosY
-			sta SpriteY + 2
+			//sta SpriteY + 2
 
 			lda FrameTimer
 			beq Ready
@@ -279,7 +332,7 @@ POWERUP: {
 
 			clc
 			adc StartPointer
-			sta SpritePointer + 2
+		//	sta SpritePointer + 2
 
 		NotYet:
 
