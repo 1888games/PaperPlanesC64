@@ -163,8 +163,8 @@ MAIN: {
 		jsr UTILITY.ClearScreen
 
 		jsr PLAYER.Reset
-		jsr COLLECT.Reset
-		jsr POWERUP.Reset
+	
+		
 		jsr ENEMY.Reset
 
 
@@ -172,6 +172,9 @@ MAIN: {
 		sta MAPLOADER.CurrentMapID
 
 		jsr MAPLOADER.DrawMap
+
+		jsr COLLECT.Reset
+		jsr POWERUP.Reset
 
 		jsr SCORING.Reset
 

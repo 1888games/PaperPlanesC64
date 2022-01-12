@@ -26,8 +26,8 @@ Default-segment:
   $102a-$107b -Random
   $107c-$1123 -Plot
   $1124-$149b -Sound
-  $149c-$2321 Lookup Data
-  $2322-$247b Main
+  $149c-$2343 Lookup Data
+  $2344-$249d Main
   $3000-$335e sid
   $5a04-$5b07 Game Map
   $5b08-$5b8b Game Tiles

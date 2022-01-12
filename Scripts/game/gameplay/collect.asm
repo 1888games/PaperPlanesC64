@@ -12,7 +12,7 @@ COLLECT: {
 	.label FrameTime = 4
 
 
-	.label StartChar = 67
+	.label StartChar = 70
 
 	PosX_LSB:		.byte 0
 	PosX_MSB:		.byte 0
@@ -21,6 +21,8 @@ COLLECT: {
 	FrameTimer: 	.byte 0
 	Delay:			.byte 10
 
+	PosX_Char:		.byte 0
+	PosY_Char:		.byte 0
 
 	Collected:		.byte 0
 
@@ -29,9 +31,10 @@ COLLECT: {
 
 		lda #0
 		sta FrameTimer
+		sta PosY
 
 		lda #YELLOW
-		sta SpriteColor + 1
+		//sta SpriteColor + 1
 
 		lda MAIN.GameIsOver
 		beq Okay	
@@ -44,9 +47,6 @@ COLLECT: {
 
 		jsr New
 
-
-
-
 		rts
 	}
 
@@ -56,49 +56,75 @@ COLLECT: {
 
 	New: {
 
-		lda SpriteColor + 1
-		and #%01111111
-		sta SpriteColor + 1
+		lda PosY
+		beq NoDelete
+
+		ldx PosX_Char
+		ldy PosY_Char
+		lda #0
+
+		jsr PLOT.PlotCharacter
+
+
+	NoDelete:
+
 
 		lda #0
 		sta PosX_MSB
 
 		jsr RANDOM.Get
+		and #%00111111
+		cmp #40
+		bcs New
+
+		sta PosX_Char
+		asl
+		asl
+		clc
+		asl
+		bcs IsMSB
+
+	AddOffset1:
 
 		clc
-		adc #40
-		sta PosX_LSB
-		sta SpriteX + 1
-
-		cmp #40
-		bcs NoMSB
-
-		lda SpriteColor + 1
-		ora #%10000000
-		sta SpriteColor + 1
+		adc #17
+		bcc NoMSB1
 
 		inc PosX_MSB
+		jmp NoMSB1
 
-		NoMSB:
+	IsMSB:
+
+		inc PosX_MSB
+		jmp AddOffset1
+
+	NoMSB1:
+		
+		sta PosX_LSB
 
 		jsr RANDOM.Get
-		cmp #MinY
-		bcc NoMSB
-
-		cmp #MaxY
-		bcs NoMSB
-
+		and #%00001111
+		sta PosY_Char
+		tay
+		asl
+		asl
+		asl
+		clc
+		adc #44
 		sta PosY
 		
 
+		ldx PosX_Char
+		lda #StartChar
+
+		jsr PLOT.PlotCharacter
+
+		lda #YELLOW + 8
+		jsr PLOT.ColorCharacter
+
 		lda #0
 		sta FrameTimer
-		sta SpriteCopyY + 1
 		sta Frame
-
-		lda #10
-		sta SpritePointer + 1
-		sta SpriteY + 1
 
 		lda #2
 		sta Delay
@@ -120,7 +146,7 @@ COLLECT: {
 		Ready2:
 
 		lda PosY
-		sta SpriteY + 1
+		//sta SpriteY + 1
 
 		lda FrameTimer
 		beq Ready
@@ -145,7 +171,7 @@ COLLECT: {
 
 			clc
 			adc #StartPointer
-			sta SpritePointer + 1
+			//sta SpritePointer + 1
 
 		NotYet:
 
