@@ -89,11 +89,7 @@ MAIN: {
 		ldy #BLACK
 		sty $d020
 
-		ldx #7
-		ldy #23
-		lda #25
-
-		jsr UTILITY.DeleteText
+	
 
 		rts
 	}
@@ -160,11 +156,7 @@ MAIN: {
 		sta GameActive
 		sta $d020
 
-		jsr UTILITY.ClearScreen
-
 		jsr PLAYER.Reset
-	
-		
 		jsr ENEMY.Reset
 
 
@@ -208,17 +200,6 @@ MAIN: {
 	}
 
 
-	LoadScreen: {
-
-		lda #GAME_MAP
-		sta MAPLOADER.CurrentMapID
-
-		jsr MAPLOADER.DrawMap
-
-
-		rts
-	}
-
 	SetupVIC: {
 
 		lda #0
@@ -258,12 +239,10 @@ MAIN: {
 
 		lda #BLACK
 		sta VIC.BORDER_COLOR
+		sta VIC.SPRITE_MULTICOLOR_1
 
 		lda #LIGHT_BLUE
 		sta VIC.EXTENDED_BG_COLOR_1
-
-		lda #BLACK
-		sta VIC.SPRITE_MULTICOLOR_1
 
 
 	 	lda #BLUE

@@ -17,17 +17,17 @@ Default-segment:
   $080e-$080d Basic End
   $0880-$08c1 Modules
   $08c2-$096a IRQ
-  $096b-$09b5 Utility
-  $09b6-$09d4 Input
-  $09d5-$0a75 Joystick
-  $0a76-$0bff Maploader
+  $096b-$097c Utility
+  $097d-$099b Input
+  $099c-$0a3c Joystick
+  $0a3d-$0bff Maploader
   $0c00-$0c8f VicSpriteTable
   $0c90-$1029 IRQ
   $102a-$107b -Random
-  $107c-$1123 -Plot
-  $1124-$149b -Sound
-  $149c-$23b3 Lookup Data
-  $23b4-$250d Main
+  $107c-$10d0 -Plot
+  $10d1-$1448 -Sound
+  $1449-$2360 Lookup Data
+  $2361-$24a3 Main
   $3000-$335e sid
   $5a04-$5b07 Game Map
   $5b08-$5b8b Game Tiles

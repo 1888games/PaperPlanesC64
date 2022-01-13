@@ -53,42 +53,7 @@ PLOT: {
 	}
 
 
-	PlotStar: {
-
-		lda ZP.Row
-		cmp #25
-		bcs Finish
-
-		stx ZP.Column
-		
-		jsr CalculateAddresses
-
-		CheckCanOverwrite:
-
-			ldy #ZERO
-			lda (SCREEN_ADDRESS), y
-			beq Okay
-
-			cmp #197
-			bcc Finish
-
-			cmp #205
-			bcs Finish
-
-		Okay:
-
-			lda ZP.CharID
-			sta (SCREEN_ADDRESS), y
-
-			lda ZP.Colour
-
-			jsr PLOT.ColorCharacter
-
-		Finish:
-
-		rts
-	}
-
+	
 
 	GetCharacter: {
 
@@ -103,31 +68,6 @@ PLOT: {
 		ldy ZP.Row
 		ldx ZP.Column
 
-		rts
-
-	}
-
-
-	PlotText: {
-
-		sta ZP.CharID
-
-		lda ZP.Column
-		sta ZP.Temp1
-
-		stx ZP.Column
-		sty ZP.Row	
-
-		jsr CalculateAddresses
-
-		ldy #ZERO
-		lda ZP.CharID
-		sta (SCREEN_ADDRESS), y
-
-		ldy ZP.Row
-		ldx ZP.Temp1
-		stx ZP.Column
-		
 		rts
 
 	}
@@ -159,29 +99,6 @@ PLOT: {
 
 
 		rts
-
-	}
-
-	ColorCharacterOnly: {
-
-		sty ZP.Row
-		stx ZP.Column
-		sta ZP.Colour
-
-		jsr CalculateAddresses
-
-		ldy #ZERO
-		lda ZP.Colour
-
-		sta (COLOR_ADDRESS), y
-
-		ldy ZP.Row
-		ldx ZP.Column
-		lda ZP.Colour
-
-		rts
-
-
 
 	}
 
