@@ -5,6 +5,6 @@ Tools:
 
 - Sublime Text
 - KickAssembler
- -CharPad
+- CharPad
 - SpritePad
 
